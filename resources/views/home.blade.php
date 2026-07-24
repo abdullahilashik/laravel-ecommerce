@@ -1,7 +1,7 @@
 <x-frontend>
         <x-frontend.home.hero-slider />
         <!--End hero slider-->
-        <x-frontend.home.category-slider />
+        <x-frontend.home.category-slider :categories="$categories" />
         <!--End category slider-->
         <section class="banners mb-25">
             <div class="container">
