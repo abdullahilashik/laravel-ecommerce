@@ -3,6 +3,7 @@ namespace App\Http\DTOs;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryDTO
 {
@@ -32,7 +33,7 @@ class CategoryDTO
             name: $data['name'],
             slug: $data['slug'],
             description: $data['description'] ?? null,
-            image: $data['image'] ?? null,
+            image: $data['image']? Storage::url($data['image']) : null,
             sort_order: $data['sort_order'] ?? 0,
             is_active: (bool) ($data['is_active'] ?? true),
             deleted_at: isset($data['deleted_at']) ? Carbon::parse($data['deleted_at']) : null,
