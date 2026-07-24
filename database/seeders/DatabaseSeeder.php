@@ -103,25 +103,25 @@ class DatabaseSeeder extends Seeder
         // ───────── Categories (11 from homepage carousel + 4 sidebar + mega menu parents) ─────────
         $categoriesData = [
             // Homepage featured categories carousel with images & counts
-            ['name' => 'Cake & Milk',     'slug' => 'cake-milk',     'image' => 'assets/imgs/shop/cat-13.png', 'sort_order' => 1,  'description' => '26 items'],
-            ['name' => 'Oganic Kiwi',     'slug' => 'oganic-kiwi',   'image' => 'assets/imgs/shop/cat-12.png', 'sort_order' => 2,  'description' => '28 items'],
-            ['name' => 'Peach',           'slug' => 'peach',         'image' => 'assets/imgs/shop/cat-11.png', 'sort_order' => 3,  'description' => '14 items'],
-            ['name' => 'Red Apple',       'slug' => 'red-apple',     'image' => 'assets/imgs/shop/cat-9.png',  'sort_order' => 4,  'description' => '54 items'],
-            ['name' => 'Snack',           'slug' => 'snack',         'image' => 'assets/imgs/shop/cat-3.png',  'sort_order' => 5,  'description' => '56 items'],
-            ['name' => 'Vegetables',      'slug' => 'vegetables',    'image' => 'assets/imgs/shop/cat-1.png',  'sort_order' => 6,  'description' => '72 items'],
-            ['name' => 'Strawberry',      'slug' => 'strawberry',    'image' => 'assets/imgs/shop/cat-2.png',  'sort_order' => 7,  'description' => '36 items'],
-            ['name' => 'Black Plum',      'slug' => 'black-plum',    'image' => 'assets/imgs/shop/cat-4.png',  'sort_order' => 8,  'description' => '123 items'],
-            ['name' => 'Custard Apple',   'slug' => 'custard-apple', 'image' => 'assets/imgs/shop/cat-5.png',  'sort_order' => 9,  'description' => '34 items'],
-            ['name' => 'Coffee & Tea',    'slug' => 'coffee-tea',    'image' => 'assets/imgs/shop/cat-14.png', 'sort_order' => 10, 'description' => '89 items'],
-            ['name' => 'Headphone',       'slug' => 'headphone',     'image' => 'assets/imgs/shop/cat-15.png', 'sort_order' => 11, 'description' => '87 items'],
+            ['name' => 'Cake & Milk',     'slug' => 'cake-milk',     'image' => 'categories/cat-13.png', 'sort_order' => 1,  'description' => '26 items'],
+            ['name' => 'Oganic Kiwi',     'slug' => 'oganic-kiwi',   'image' => 'categories/cat-12.png', 'sort_order' => 2,  'description' => '28 items'],
+            ['name' => 'Peach',           'slug' => 'peach',         'image' => 'categories/cat-11.png', 'sort_order' => 3,  'description' => '14 items'],
+            ['name' => 'Red Apple',       'slug' => 'red-apple',     'image' => 'categories/cat-9.png',  'sort_order' => 4,  'description' => '54 items'],
+            ['name' => 'Snack',           'slug' => 'snack',         'image' => 'categories/cat-3.png',  'sort_order' => 5,  'description' => '56 items'],
+            ['name' => 'Vegetables',      'slug' => 'vegetables',    'image' => 'categories/cat-1.png',  'sort_order' => 6,  'description' => '72 items'],
+            ['name' => 'Strawberry',      'slug' => 'strawberry',    'image' => 'categories/cat-2.png',  'sort_order' => 7,  'description' => '36 items'],
+            ['name' => 'Black Plum',      'slug' => 'black-plum',    'image' => 'categories/cat-4.png',  'sort_order' => 8,  'description' => '123 items'],
+            ['name' => 'Custard Apple',   'slug' => 'custard-apple', 'image' => 'categories/cat-5.png',  'sort_order' => 9,  'description' => '34 items'],
+            ['name' => 'Coffee & Tea',    'slug' => 'coffee-tea',    'image' => 'categories/cat-14.png', 'sort_order' => 10, 'description' => '89 items'],
+            ['name' => 'Headphone',       'slug' => 'headphone',     'image' => 'categories/cat-15.png', 'sort_order' => 11, 'description' => '87 items'],
             // Sidebar filter categories (from shop-grid-left.html)
             ['name' => 'Milks & Dairies',  'slug' => 'milks-dairies',  'image' => null, 'sort_order' => 12, 'description' => null],
             ['name' => 'Coffes & Teas',    'slug' => 'coffes-teas',    'image' => null, 'sort_order' => 13, 'description' => null],
             ['name' => 'Pet Foods',        'slug' => 'pet-foods',      'image' => null, 'sort_order' => 14, 'description' => null],
             ['name' => 'Meats',            'slug' => 'meats',          'image' => null, 'sort_order' => 15, 'description' => null],
-            ['name' => 'Fruits',           'slug' => 'fruits',         'image' => null, 'sort_order' => 16, 'description' => null],
+            ['name' => 'Fruits',           'slug' => 'fruits',         'image' => 'categories/cat-2.png', 'sort_order' => 16, 'description' => null],
             // Mega menu parents
-            ['name' => 'Fruit & Vegetables',  'slug' => 'fruit-vegetables',  'image' => null, 'sort_order' => 17, 'description' => null],
+            ['name' => 'Fruit & Vegetables',  'slug' => 'fruit-vegetables',  'image' => 'categories/cat-1.png', 'sort_order' => 17, 'description' => null],
             ['name' => 'Breakfast & Dairy',   'slug' => 'breakfast-dairy',   'image' => null, 'sort_order' => 18, 'description' => null],
             ['name' => 'Meat & Seafood',      'slug' => 'meat-seafood',      'image' => null, 'sort_order' => 19, 'description' => null],
             // Search dropdown categories (from header)
