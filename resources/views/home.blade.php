@@ -43,7 +43,7 @@
             </div>
         </section>
         <!--End banners-->
-        <x-frontend.home.product-tab />
+        <x-frontend.home.product-tab :tabs="$productTabs" />
         <!--Products Tabs-->
         <x-frontend.home.best-sales />
         <!--End Best Sales-->
