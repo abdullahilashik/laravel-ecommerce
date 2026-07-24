@@ -52,4 +52,34 @@ class ProductController extends Controller
 
         return view('shop.show', compact('product', 'relatedProducts'));
     }
+
+    public function quickview($slug)
+    {
+        $product = Product::with(['images', 'category', 'brand', 'reviews'])
+            ->where('slug', $slug)
+            ->where('is_active', true)
+            ->firstOrFail();
+
+        $images = $product->images->sortBy('sort_order')->values();
+        $average = (float) $product->reviews->avg('rating');
+        $reviewCount = $product->reviews->count();
+        $salePrice = $product->sale_price;
+        $hasDiscount = $salePrice && $salePrice < $product->price;
+
+        return response()->json([
+            'name'          => $product->name,
+            'url'           => route('product.show', $product->slug),
+            'category'      => $product->category?->name ?? '',
+            'brand'         => $product->brand?->name ?? '',
+            'price'         => $product->price,
+            'sale_price'    => $salePrice,
+            'has_discount'  => $hasDiscount,
+            'discount_pct'  => $hasDiscount ? round((($product->price - $salePrice) / $product->price) * 100) : 0,
+            'rating'        => round($average, 1),
+            'rating_pct'    => $average * 20,
+            'review_count'  => $reviewCount,
+            'images'        => $images->map(fn($img) => asset($img->image_path))->values(),
+            'sku'           => $product->sku,
+        ]);
+    }
 }
