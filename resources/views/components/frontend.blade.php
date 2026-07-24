@@ -102,6 +102,7 @@
     <!-- Template  JS -->
     <script src={{ asset('assets/js/main.js?v=6.0') }}></script>
     <script src={{ asset('assets/js/shop.js?v=6.0') }}></script>
+    @vite(['resources/js/app.js'])
 </body>
 
 </html>

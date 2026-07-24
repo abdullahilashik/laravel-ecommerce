@@ -67,6 +67,7 @@ class ProductController extends Controller
         $hasDiscount = $salePrice && $salePrice < $product->price;
 
         return response()->json([
+            'id'            => $product->id,
             'name'          => $product->name,
             'url'           => route('product.show', $product->slug),
             'category'      => $product->category?->name ?? '',
