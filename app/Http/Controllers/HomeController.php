@@ -35,6 +35,6 @@ class HomeController extends Controller
             ->get();
         $cartCount = $cartService->getCount();
 
-        return view('welcome', compact('sliders', 'categories', 'featuredProducts', 'popularProducts', 'bestSellers', 'dealsOfDay', 'cartCount'));
+        return view('home', compact('sliders', 'categories', 'featuredProducts', 'popularProducts', 'bestSellers', 'dealsOfDay', 'cartCount'));
     }
 }

@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nest - Multipurpose eCommerce Marketplace</title>
+    <title>Nest 2 - Multipurpose eCommerce Marketplace</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-white text-gray-800 antialiased font-sans">
-    
+
     <!-- Top Header Bar -->
     <div class="border-b border-gray-200 text-xs text-gray-500 py-2 hidden lg:block">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
