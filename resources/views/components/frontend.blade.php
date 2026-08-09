@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Nest - Multipurpose eCommerce HTML Template</title>
+    <title>{{ $attributes->get('title', 'Nest - Multipurpose eCommerce HTML Template') }}</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,6 +16,7 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/plugins/animate.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/main.css?v=6.0') }}" />
+    @stack('styles')
 </head>
 
 <body>
@@ -103,6 +104,7 @@
     <script src={{ asset('assets/js/main.js?v=6.0') }}></script>
     <script src={{ asset('assets/js/shop.js?v=6.0') }}></script>
     @vite(['resources/js/app.js'])
+    @stack('scripts')
 </body>
 
 </html>
