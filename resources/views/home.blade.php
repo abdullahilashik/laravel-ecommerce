@@ -47,7 +47,7 @@
         <!--Products Tabs-->
         <x-frontend.home.best-sales />
         <!--End Best Sales-->
-        <x-frontend.home.deals />
+        <x-frontend.home.deals :deals="$dealsOfDay" />
         <!--End Deals-->
         <section class="section-padding mb-30">
             <div class="container">
