@@ -27,9 +27,10 @@ class CheckoutController extends Controller
 
         $subtotal = $this->cartService->getSubtotal();
         $shippingCost = 10.00;
-        $total = $subtotal + $shippingCost;
+        $taxAmount = round($subtotal * 0.05, 2);
+        $total = $subtotal + $shippingCost + $taxAmount;
 
-        return view('checkout.index', compact('cartItems', 'subtotal', 'shippingCost', 'total'));
+        return view('checkout.index', compact('cartItems', 'subtotal', 'shippingCost', 'taxAmount', 'total'));
     }
 
     public function store(Request $request)

@@ -136,46 +136,11 @@
                                 <div class="header-action-icon-2">
                                     <a class="mini-cart-icon" href="{{ route('cart.index') }}">
                                         <img alt="Nest" src="{{ asset('assets/imgs/theme/icons/icon-cart.svg') }}" />
-                                        <span class="pro-count blue">{{ $cartCount }}</span>
+                                        <span class="pro-count blue" id="cart-count-desktop">{{ $cartCount }}</span>
                                     </a>
                                     <a href="{{ route('cart.index') }}"><span class="lable">Cart</span></a>
-                                    <div class="cart-dropdown-wrap cart-dropdown-hm2">
-                                        <ul>
-                                            @forelse ($cartItems as $item)
-                                                <li>
-                                                    <div class="shopping-cart-img">
-                                                        <a href="{{ route('product.show', $item->product->slug) }}">
-                                                            @if ($item->product->primaryImage)
-                                                                <img alt="{{ $item->product->name }}" src="{{ asset($item->product->primaryImage->image_path) }}" />
-                                                            @endif
-                                                        </a>
-                                                    </div>
-                                                    <div class="shopping-cart-title">
-                                                        <h4><a href="{{ route('product.show', $item->product->slug) }}">{{ $item->product->name }}</a></h4>
-                                                        <h4><span>{{ $item->quantity }} × </span>${{ number_format($item->product->sale_price ?? $item->product->price, 2) }}</h4>
-                                                    </div>
-                                                    <div class="shopping-cart-delete">
-                                                        <a href="#" onclick="event.preventDefault(); document.getElementById('remove-cart-d-{{ $item->id }}').submit();"><i class="fi-rs-cross-small"></i></a>
-                                                        <form id="remove-cart-d-{{ $item->id }}" action="{{ route('cart.remove', $item->id) }}" method="POST" class="d-none">@csrf @method('DELETE')</form>
-                                                    </div>
-                                                </li>
-                                            @empty
-                                                <li>
-                                                    <div class="shopping-cart-title">
-                                                        <h4>Your cart is empty</h4>
-                                                    </div>
-                                                </li>
-                                            @endforelse
-                                        </ul>
-                                        <div class="shopping-cart-footer">
-                                            <div class="shopping-cart-total">
-                                                <h4>Total <span>${{ number_format($cartSubtotal, 2) }}</span></h4>
-                                            </div>
-                                            <div class="shopping-cart-button">
-                                                <a href="{{ route('cart.index') }}" class="outline">View cart</a>
-                                                <a href="{{ route('checkout.show') }}">Checkout</a>
-                                            </div>
-                                        </div>
+                                    <div class="cart-dropdown-wrap cart-dropdown-hm2" id="cart-dropdown-desktop">
+                                        @include('components.frontend.header.cart-dropdown', ['cartItems' => $cartItems, 'cartSubtotal' => $cartSubtotal, 'prefix' => 'd'])
                                     </div>
                                 </div>
                                 <div class="header-action-icon-2">
@@ -306,45 +271,10 @@
                             <div class="header-action-icon-2">
                                 <a class="mini-cart-icon" href="{{ route('cart.index') }}">
                                     <img alt="Nest" src="{{ asset('assets/imgs/theme/icons/icon-cart.svg') }}" />
-                                    <span class="pro-count white">{{ $cartCount }}</span>
+                                    <span class="pro-count white" id="cart-count-mobile">{{ $cartCount }}</span>
                                 </a>
-                                <div class="cart-dropdown-wrap cart-dropdown-hm2">
-                                    <ul>
-                                        @forelse ($cartItems as $item)
-                                            <li>
-                                                <div class="shopping-cart-img">
-                                                    <a href="{{ route('product.show', $item->product->slug) }}">
-                                                        @if ($item->product->primaryImage)
-                                                            <img alt="{{ $item->product->name }}" src="{{ asset($item->product->primaryImage->image_path) }}" />
-                                                        @endif
-                                                    </a>
-                                                </div>
-                                                <div class="shopping-cart-title">
-                                                    <h4><a href="{{ route('product.show', $item->product->slug) }}">{{ $item->product->name }}</a></h4>
-                                                    <h3><span>{{ $item->quantity }} × </span>${{ number_format($item->product->sale_price ?? $item->product->price, 2) }}</h3>
-                                                </div>
-                                                <div class="shopping-cart-delete">
-                                                    <a href="#" onclick="event.preventDefault(); document.getElementById('remove-cart-m-{{ $item->id }}').submit();"><i class="fi-rs-cross-small"></i></a>
-                                                    <form id="remove-cart-m-{{ $item->id }}" action="{{ route('cart.remove', $item->id) }}" method="POST" class="d-none">@csrf @method('DELETE')</form>
-                                                </div>
-                                            </li>
-                                        @empty
-                                            <li>
-                                                <div class="shopping-cart-title">
-                                                    <h4>Your cart is empty</h4>
-                                                </div>
-                                            </li>
-                                        @endforelse
-                                    </ul>
-                                    <div class="shopping-cart-footer">
-                                        <div class="shopping-cart-total">
-                                            <h4>Total <span>${{ number_format($cartSubtotal, 2) }}</span></h4>
-                                        </div>
-                                        <div class="shopping-cart-button">
-                                            <a href="{{ route('cart.index') }}">View cart</a>
-                                            <a href="{{ route('checkout.show') }}">Checkout</a>
-                                        </div>
-                                    </div>
+                                <div class="cart-dropdown-wrap cart-dropdown-hm2" id="cart-dropdown-mobile">
+                                    @include('components.frontend.header.cart-dropdown', ['cartItems' => $cartItems, 'cartSubtotal' => $cartSubtotal, 'prefix' => 'm'])
                                 </div>
                             </div>
                         </div>

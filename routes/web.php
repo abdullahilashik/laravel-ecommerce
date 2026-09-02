@@ -22,7 +22,9 @@ Route::get('/product/{slug}/quickview', [ProductController::class, 'quickview'])
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
 Route::put('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
+Route::put('/cart/update-all', [CartController::class, 'updateAll'])->name('cart.updateAll');
 Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
+Route::delete('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
 
 // Checkout (Auth required)
 Route::middleware('auth')->group(function () {
@@ -32,6 +34,7 @@ Route::middleware('auth')->group(function () {
 
     // Customer Account
     Route::get('/account', [AccountController::class, 'index'])->name('account.index');
+    Route::patch('/account', [AccountController::class, 'update'])->name('account.update');
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');

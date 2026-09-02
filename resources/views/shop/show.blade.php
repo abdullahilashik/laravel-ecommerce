@@ -91,7 +91,7 @@
                                         </ul>
                                     </div>
                                 @endif
-                                <form action="{{ route('cart.add', $product->id) }}" method="POST" class="detail-extralink mb-50">
+                                <form action="{{ route('cart.add', $product->id) }}" method="POST" class="detail-extralink mb-50" data-cart-add>
                                     @csrf
                                     <div class="detail-qty border radius">
                                         <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>

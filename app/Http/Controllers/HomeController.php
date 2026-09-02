@@ -38,11 +38,12 @@ class HomeController extends Controller
             ->inRandomOrder()
             ->take(4)
             ->get();
-        $dealsOfDay = Product::with(['primaryImage', 'category', 'brand'])
+        $dealsOfDay = Product::with(self::TAB_RELATIONS)
             ->where('is_active', true)
             ->whereNotNull('sale_price')
             ->take(4)
-            ->get();
+            ->get()
+            ->map(fn($product, $index) => ProductTabDTO::fromModel($product, $index));
 
         $productTabs = $this->buildProductTabs($featuredProducts, $popularProducts);
 

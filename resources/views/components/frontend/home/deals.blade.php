@@ -46,7 +46,7 @@
                                         @endif
                                     </div>
                                     <div class="add-cart">
-                                        <a class="add" href="{{ $product->url }}"><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                                        <a class="add" href="{{ $product->url }}" data-cart-add-product="{{ $product->id }}"><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
                                     </div>
                                 </div>
                             </div>

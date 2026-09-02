@@ -41,7 +41,7 @@
                                     <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
                                 </div>
                                 <div class="product-extra-link2">
-                                    <form id="qv-cart-form" method="POST">
+                                    <form id="qv-cart-form" method="POST" data-cart-add>
                                         @csrf
                                         <input type="hidden" name="quantity" value="1">
                                         <button type="submit" class="button button-add-to-cart"><i class="fi-rs-shopping-cart"></i>Add to cart</button>

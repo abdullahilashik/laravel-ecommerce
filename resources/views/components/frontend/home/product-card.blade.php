@@ -88,7 +88,7 @@
                 <span class="text-sm text-gray-400 line-through ml-1">${{ number_format($product->price, 2) }}</span>
             @endif
         </div>
-        <form action="{{ route('cart.add', $product->id) }}" method="POST">
+        <form action="{{ route('cart.add', $product->id) }}" method="POST" data-cart-add>
             @csrf
             <button type="submit" class="bg-emerald-50 text-emerald-600 p-2.5 rounded-xl hover:bg-emerald-600 hover:text-white transition font-bold flex items-center text-sm">
                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
