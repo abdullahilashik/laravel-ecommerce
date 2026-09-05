@@ -12,6 +12,8 @@
     $mainHalf = (int) ceil($mainCats->count() / 2);
     $moreHalf = (int) ceil($moreCats->count() / 2);
     $accountUrl = auth()->check() ? route('account.index') : route('login');
+    $wishlistUrl = auth()->check() ? route('wishlist.index') : route('login');
+    $wishlistCount = auth()->check() ? auth()->user()->wishlists()->count() : 0;
 @endphp
 <header class="header-area header-style-1 header-height-2">
         <div class="mobile-promotion">
@@ -25,7 +27,7 @@
                             <ul>
                                 <li><a href="#">About Us</a></li>
                                 <li><a href="{{ $accountUrl }}">My Account</a></li>
-                                <li><a href="#">Wishlist</a></li>
+                                <li><a href="{{ $wishlistUrl }}">Wishlist</a></li>
                                 <li><a href="#">Order Tracking</a></li>
                             </ul>
                         </div>
@@ -127,11 +129,11 @@
                                     <a href="#"><span class="lable ml-0">Compare</span></a>
                                 </div>
                                 <div class="header-action-icon-2">
-                                    <a href="#">
+                                    <a href="{{ $wishlistUrl }}">
                                         <img class="svgInject" alt="Nest" src="{{ asset('assets/imgs/theme/icons/icon-heart.svg') }}" />
-                                        <span class="pro-count blue">{{ $wishlistCount }}</span>
+                                        <span class="pro-count blue" id="wishlist-count-desktop">{{ $wishlistCount }}</span>
                                     </a>
-                                    <a href="#"><span class="lable">Wishlist</span></a>
+                                    <a href="{{ $wishlistUrl }}"><span class="lable">Wishlist</span></a>
                                 </div>
                                 <div class="header-action-icon-2">
                                     <a class="mini-cart-icon" href="{{ route('cart.index') }}">
@@ -196,14 +198,14 @@
                                         <ul>
                                             @foreach ($mainCats->take($mainHalf) as $index => $category)
                                                 <li>
-                                                    <a href="{{ route('shop.index', ['category' => $category->slug]) }}"> <img src="{{ asset('assets/imgs/theme/icons/category-' . (($index % 10) + 1) . '.svg') }}" alt="" />{{ $category->name }}</a>
+                                                    <a href="{{ route('category.show', $category->slug) }}"> <img src="{{ asset('assets/imgs/theme/icons/category-' . (($index % 10) + 1) . '.svg') }}" alt="" />{{ $category->name }}</a>
                                                 </li>
                                             @endforeach
                                         </ul>
                                         <ul class="end">
                                             @foreach ($mainCats->slice($mainHalf) as $index => $category)
                                                 <li>
-                                                    <a href="{{ route('shop.index', ['category' => $category->slug]) }}"> <img src="{{ asset('assets/imgs/theme/icons/category-' . ((($index + $mainHalf) % 10) + 1) . '.svg') }}" alt="" />{{ $category->name }}</a>
+                                                    <a href="{{ route('category.show', $category->slug) }}"> <img src="{{ asset('assets/imgs/theme/icons/category-' . ((($index + $mainHalf) % 10) + 1) . '.svg') }}" alt="" />{{ $category->name }}</a>
                                                 </li>
                                             @endforeach
                                         </ul>
@@ -215,14 +217,14 @@
                                             <ul>
                                                 @foreach ($moreCats->take($moreHalf) as $index => $category)
                                                     <li>
-                                                        <a href="{{ route('shop.index', ['category' => $category->slug]) }}"> <img src="{{ asset('assets/imgs/theme/icons/category-' . ((($index + 10) % 10) + 1) . '.svg') }}" alt="" />{{ $category->name }}</a>
+                                                        <a href="{{ route('category.show', $category->slug) }}"> <img src="{{ asset('assets/imgs/theme/icons/category-' . ((($index + 10) % 10) + 1) . '.svg') }}" alt="" />{{ $category->name }}</a>
                                                     </li>
                                                 @endforeach
                                             </ul>
                                             <ul class="end">
                                                 @foreach ($moreCats->slice($moreHalf) as $index => $category)
                                                     <li>
-                                                        <a href="{{ route('shop.index', ['category' => $category->slug]) }}"> <img src="{{ asset('assets/imgs/theme/icons/category-' . ((($index + 10 + $moreHalf) % 10) + 1) . '.svg') }}" alt="" />{{ $category->name }}</a>
+                                                        <a href="{{ route('category.show', $category->slug) }}"> <img src="{{ asset('assets/imgs/theme/icons/category-' . ((($index + 10 + $moreHalf) % 10) + 1) . '.svg') }}" alt="" />{{ $category->name }}</a>
                                                     </li>
                                                 @endforeach
                                             </ul>
@@ -263,9 +265,9 @@
                     <div class="header-action-right d-block d-lg-none">
                         <div class="header-action-2">
                             <div class="header-action-icon-2">
-                                <a href="#">
+                                <a href="{{ $wishlistUrl }}">
                                     <img alt="Nest" src="{{ asset('assets/imgs/theme/icons/icon-heart.svg') }}" />
-                                    <span class="pro-count white">{{ $wishlistCount }}</span>
+                                    <span class="pro-count white" id="wishlist-count-mobile">{{ $wishlistCount }}</span>
                                 </a>
                             </div>
                             <div class="header-action-icon-2">
@@ -324,7 +326,7 @@
                                 <ul class="dropdown">
                                     @foreach ($categories as $category)
                                         <li>
-                                            <a href="{{ route('shop.index', ['category' => $category->slug]) }}">{{ $category->name }}</a>
+                                            <a href="{{ route('category.show', $category->slug) }}">{{ $category->name }}</a>
                                         </li>
                                     @endforeach
                                 </ul>

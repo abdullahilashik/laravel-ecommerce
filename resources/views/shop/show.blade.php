@@ -16,7 +16,7 @@
                 <a href="{{ route('home') }}" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
                 <span></span>
                 @if($product->category)
-                    <a href="{{ route('shop.index', ['category' => $product->category->slug]) }}">{{ $product->category->name }}</a>
+                    <a href="{{ route('category.show', $product->category->slug) }}">{{ $product->category->name }}</a>
                     <span></span>
                 @endif
                 {{ $product->name }}
@@ -100,7 +100,7 @@
                                     </div>
                                     <div class="product-extra-link2">
                                         <button type="submit" class="button button-add-to-cart"><i class="fi-rs-shopping-cart"></i>Add to cart</button>
-                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" href="#"><i class="fi-rs-heart"></i></a>
+                                        <a aria-label="Add To Wishlist" class="action-btn hover-up" href="#" data-wishlist-toggle="{{ $product->id }}"><i class="fi-rs-heart"></i></a>
                                         <a aria-label="Compare" class="action-btn hover-up" href="#"><i class="fi-rs-shuffle"></i></a>
                                     </div>
                                 </form>
@@ -306,7 +306,7 @@
                                                 </div>
                                                 <div class="product-action-1">
                                                     <a aria-label="Quick view" class="action-btn small hover-up quickview-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-product-slug="{{ $related->slug }}"><i class="fi-rs-search"></i></a>
-                                                    <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="#" tabindex="0"><i class="fi-rs-heart"></i></a>
+                                                    <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="#" tabindex="0" data-wishlist-toggle="{{ $related->id }}"><i class="fi-rs-heart"></i></a>
                                                     <a aria-label="Compare" class="action-btn small hover-up" href="#" tabindex="0"><i class="fi-rs-shuffle"></i></a>
                                                 </div>
                                                 @if($rHasDiscount)

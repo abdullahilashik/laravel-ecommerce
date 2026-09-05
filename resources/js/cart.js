@@ -120,4 +120,67 @@
             .then(handleCartResponse)
             .catch(handleCartError);
     });
+
+    // Wishlist toggle (heart icons)
+    document.addEventListener('click', function (event) {
+        var toggleBtn = event.target.closest('[data-wishlist-toggle]');
+        if (!toggleBtn) return;
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        var productId = toggleBtn.dataset.wishlistToggle;
+        var formData = new FormData();
+        formData.append('_token', getCsrfToken());
+
+        fetch('/wishlist/toggle/' + productId, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json', 'X-Requested-With': 'XMLHttpRequest' },
+            body: formData,
+        })
+        .then(function (response) {
+            if (response.redirected) {
+                showCartToast('Please sign in to manage your wishlist.', 'error');
+                setTimeout(function () { window.location.href = response.url; }, 1000);
+                return;
+            }
+            return response.json();
+        })
+        .then(function (data) {
+            if (!data) return;
+            showCartToast(data.message || 'Wishlist updated.');
+
+            var dd = document.getElementById('wishlist-count-desktop');
+            var dm = document.getElementById('wishlist-count-mobile');
+            if (dd) dd.textContent = data.count;
+            if (dm) dm.textContent = data.count;
+
+            toggleBtn.classList.toggle('wishlisted', data.wishlisted);
+        })
+        .catch(function () { showCartToast('Could not update wishlist.', 'error'); });
+    });
+
+    // Wishlist page remove
+    document.addEventListener('submit', function (event) {
+        var wlForm = event.target.closest('form[data-wishlist-remove]');
+        if (!wlForm) return;
+
+        event.preventDefault();
+        sendCartRequest(wlForm.action, new FormData(wlForm))
+            .then(function (response) {
+                return response.json().then(function (data) {
+                    if (!data || !data.success) {
+                        showCartToast((data && data.error) ? data.error : 'Something went wrong.', 'error');
+                        return;
+                    }
+                    showCartToast(data.message || 'Removed from wishlist.');
+                    var dd = document.getElementById('wishlist-count-desktop');
+                    var dm = document.getElementById('wishlist-count-mobile');
+                    if (dd) dd.textContent = data.count;
+                    if (dm) dm.textContent = data.count;
+                    window.location.reload();
+                });
+            })
+            .catch(function () { showCartToast('Could not update wishlist.', 'error'); });
+    });
 })();

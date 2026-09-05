@@ -24,10 +24,10 @@
                     @foreach ($categories as $category)
                         <div class="card-2 bg-9 wow animate__animated animate__fadeInUp" data-wow-delay=".1s">
                             <figure class="img-hover-scale overflow-hidden">
-                                <a href="{{ $category->slug }}"><img src="{{ $category->image }}"
+                                <a href="{{ route('category.show', $category->slug) }}"><img src="{{ $category->image }}"
                                         alt="" /></a>
                             </figure>
-                            <h6><a href="{{ $category->slug }}">{{ $category->name }}</a></h6>
+                            <h6><a href="{{ route('category.show', $category->slug) }}">{{ $category->name }}</a></h6>
                             <span>{{ $category->products_count }} items</span>
                         </div>
                     @endforeach

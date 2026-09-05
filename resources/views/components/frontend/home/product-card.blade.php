@@ -37,7 +37,7 @@
             </a>
 
             <div class="absolute top-3 right-3 flex flex-col space-y-2 opacity-0 group-hover:opacity-100 transition duration-200">
-                <a aria-label="Add To Wishlist" class="action-btn w-8 h-8 bg-white rounded-full shadow flex items-center justify-center hover:bg-rose-50 hover:text-rose-500 text-gray-400 text-sm" href="#">
+                <a aria-label="Add To Wishlist" class="action-btn w-8 h-8 bg-white rounded-full shadow flex items-center justify-center hover:bg-rose-50 hover:text-rose-500 text-gray-400 text-sm" href="#" data-wishlist-toggle="{{ $product->id }}">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
                 </a>
                 <a aria-label="Compare" class="action-btn w-8 h-8 bg-white rounded-full shadow flex items-center justify-center hover:bg-blue-50 hover:text-blue-500 text-gray-400 text-sm" href="#">
@@ -50,7 +50,7 @@
         </div>
 
         <span class="text-xs text-gray-400 uppercase font-semibold">
-            <a href="{{ route('shop.index', ['category' => $product->categorySlug]) }}" class="hover:text-emerald-600">
+            <a href="{{ route('category.show', $product->categorySlug) }}" class="hover:text-emerald-600">
                 {{ $product->categoryName ?? 'Grocery' }}
             </a>
         </span>

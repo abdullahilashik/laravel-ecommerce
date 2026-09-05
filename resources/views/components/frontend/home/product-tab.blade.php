@@ -51,7 +51,7 @@
                                             </a>
                                         </div>
                                         <div class="product-action-1">
-                                            <a aria-label="Add To Wishlist" class="action-btn" href="#"><i class="fi-rs-heart"></i></a>
+                                            <a aria-label="Add To Wishlist" class="action-btn" href="#" data-wishlist-toggle="{{ $product->id }}"><i class="fi-rs-heart"></i></a>
                                             <a aria-label="Compare" class="action-btn" href="#"><i class="fi-rs-shuffle"></i></a>
                                             <a aria-label="Quick view" class="action-btn quickview-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" data-product-slug="{{ $product->slug }}"><i class="fi-rs-eye"></i></a>
                                         </div>
@@ -69,7 +69,7 @@
                                     </div>
                                     <div class="product-content-wrap">
                                         <div class="product-category">
-                                            <a href="{{ route('shop.index', ['category' => $product->categorySlug]) }}">{{ $product->categoryName }}</a>
+                                            <a href="{{ route('category.show', $product->categorySlug) }}">{{ $product->categoryName }}</a>
                                         </div>
                                         <h2><a href="{{ $product->url }}">{{ $product->name }}</a></h2>
                                         <div class="product-rate-cover">

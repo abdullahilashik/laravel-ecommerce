@@ -21,6 +21,13 @@
 </head>
 
 <body>
+    @php
+        $showDealModal = ! session('frontend.deal_modal_shown', false);
+        if ($showDealModal) {
+            session(['frontend.deal_modal_shown' => true]);
+        }
+    @endphp
+    @if($showDealModal)
     <!-- Modal -->
     <div class="modal fade custom-modal" id="onloadModal" tabindex="-1" aria-labelledby="onloadModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -63,6 +70,7 @@
             </div>
         </div>
     </div>
+    @endif
     <!-- Quick view -->
     <x-frontend.quickview />
     <x-frontend.header />
